@@ -266,7 +266,7 @@ $('#setexample').on('change', function () {
     if (value == 1) {
         clearGraph();
       
-        maps.setView(new L.LatLng(41.005901, 28.975421), 18);
+        maps.setView(new L.LatLng(-16.500142704233728, -68.13390254974365), 15);
 
         $.getJSON("mapdata/nodesandpaths1.json", function (datad) {
             var importedData = datad;
