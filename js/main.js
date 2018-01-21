@@ -15,10 +15,10 @@ var mapdata = {
     }
 };
 
-maps = L.map('svg-map').setView([41.070034, 28.806152], 10);
+maps = L.map('svg-map').setView([-16.500142704233728, -68.13390254974365], 18);
 mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; ' + mapLink + ' Contributors', maxZoom: 18,
+    attribution: '&copy; ' + mapLink + ' Contributors', maxZoom: 20,
 }).addTo(maps);
 maps._initPathRoot()
 svg = d3.select("#svg-map").select("svg")
@@ -117,7 +117,7 @@ function redrawNodes() {
 
     nodesEnter.append("circle")
         .attr("nodeId", function (d, i) { return i; })
-        .attr("r", '24')
+        .attr("r", '15')
         .attr("class", "node")
         .style("cursor", "pointer")
         .on('click', nodeClick)
@@ -266,7 +266,7 @@ $('#setexample').on('change', function () {
     if (value == 1) {
         clearGraph();
       
-        maps.setView(new L.LatLng(-16.500142704233728, -68.13390254974365), 10);
+        maps.setView(new L.LatLng(-16.500142704233728, -68.13390254974365), 18);
 
         $.getJSON("mapdata/nodesandpaths1.json", function (datad) {
             var importedData = datad;
