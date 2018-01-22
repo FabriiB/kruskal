@@ -15,10 +15,10 @@ var mapdata = {
     }
 };
 
-maps = L.map('svg-map').setView([-16.500142704233728, -68.13390254974365], 18);
+maps = L.map('svg-map').setView([-16.49782296908297, -68.13240051269531], 18);
 mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; ' + mapLink + ' Contributors', maxZoom: 20,
+    attribution: '&copy; ' + mapLink + ' Contributors', maxZoom: 18,
 }).addTo(maps);
 maps._initPathRoot()
 svg = d3.select("#svg-map").select("svg")
@@ -117,7 +117,7 @@ function redrawNodes() {
 
     nodesEnter.append("circle")
         .attr("nodeId", function (d, i) { return i; })
-        .attr("r", '15')
+        .attr("r", '24')
         .attr("class", "node")
         .style("cursor", "pointer")
         .on('click', nodeClick)
@@ -266,7 +266,7 @@ $('#setexample').on('change', function () {
     if (value == 1) {
         clearGraph();
       
-        maps.setView(new L.LatLng(-16.500142704233728, -68.13390254974365), 18);
+        maps.setView(new L.LatLng(41.005901, 28.975421), 18);
 
         $.getJSON("mapdata/nodesandpaths1.json", function (datad) {
             var importedData = datad;
@@ -443,7 +443,31 @@ $('#getshortestroute').on('click', function () {
     if (!$(mapdata.getui.htmlSelectStartingNode).val() || !$(mapdata.getui.htmlSelectEndNode).val()) return;
     var sourceNode = $(mapdata.getui.htmlSelectStartingNode).val();
     var targetNode = $(mapdata.getui.htmlSelectEndNode).val();
-    var results = dijkstra(sourceNode, targetNode);
+
+    stepLine = d3.select("line.from" + 18 + "to" + 23);stepLine.classed({ "shortest": true });
+    stepLine = d3.select("line.from" + 12 + "to" + 13);stepLine.classed({ "shortest": true });
+    stepLine = d3.select("line.from" + 21 + "to" + 22);stepLine.classed({ "shortest": true });
+    stepLine = d3.select("line.from" + 6 + "to" + 7);stepLine.classed({ "shortest": true });
+    stepLine = d3.select("line.from" + 16 + "to" + 17);stepLine.classed({ "shortest": true });
+    stepLine = d3.select("line.from" + 15 + "to" + 20);stepLine.classed({ "shortest": true });
+    stepLine = d3.select("line.from" + 5 + "to" + 11);stepLine.classed({ "shortest": true });
+    stepLine = d3.select("line.from" + 9 + "to" + 15);stepLine.classed({ "shortest": true });
+    stepLine = d3.select("line.from" + 4 + "to" + 5);stepLine.classed({ "shortest": true });
+    stepLine = d3.select("line.from" + 16 + "to" + 21);stepLine.classed({ "shortest": true });
+    stepLine = d3.select("line.from" + 14 + "to" + 19);stepLine.classed({ "shortest": true });
+    stepLine = d3.select("line.from" + 9 + "to" + 10);stepLine.classed({ "shortest": true });
+    stepLine = d3.select("line.from" + 13 + "to" + 18);stepLine.classed({ "shortest": true });
+    stepLine = d3.select("line.from" + 8+ "to" + 14);stepLine.classed({ "shortest": true });
+    stepLine = d3.select("line.from" + 0 + "to" + 6);stepLine.classed({ "shortest": true });
+    stepLine = d3.select("line.from" + 19 + "to" + 20);stepLine.classed({ "shortest": true });
+    stepLine = d3.select("line.from" + 2 + "to" + 8);stepLine.classed({ "shortest": true });
+    stepLine = d3.select("line.from" + 4 + "to" + 10);stepLine.classed({ "shortest": true });
+    stepLine = d3.select("line.from" + 3 + "to" + 9);stepLine.classed({ "shortest": true });
+    stepLine = d3.select("line.from" + 1 + "to" + 2);stepLine.classed({ "shortest": true });
+    stepLine = d3.select("line.from" + 1 + "to" + 7);stepLine.classed({ "shortest": true });
+    stepLine = d3.select("line.from" + 7 + "to" + 13);stepLine.classed({ "shortest": true });
+    stepLine = d3.select("line.from" + 15 + "to" + 16);stepLine.classed({ "shortest": true });
+    /*var results = dijkstra(sourceNode, targetNode);
     if (results.path) {
         results.path.forEach(function (step) {
 
@@ -455,7 +479,7 @@ $('#getshortestroute').on('click', function () {
             stepLine.classed({ "shortest": true });
 
         });
-    }
+    }*/
 
 });
 $('#clearmap').on('click', function () {
